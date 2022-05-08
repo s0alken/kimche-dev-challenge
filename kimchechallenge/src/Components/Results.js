@@ -4,7 +4,7 @@ import Group from "./Group";
 const Results = ({groups, searched}) => {
 
     if(!Object.keys(groups).length && searched) {
-        return <div className="results___nothing-found">Ups! Nada encontrado...</div>
+        return <div className="results___nothing-found container">Ups! Nada encontrado...</div>
     }
 
     return (

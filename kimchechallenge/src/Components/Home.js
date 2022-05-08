@@ -10,9 +10,9 @@ const Home = ({ searchTerm, setSearchTerm, onSearch }) => {
                 <h1 className="home__title">Country Search</h1>
                 <h3 className="home__description">Search any country in the world!</h3>
 
-                <form action="" className="home__search">
+                <form className="home__search">
                     <input
-                        type="search"
+                        type="text"
                         placeholder="Search a country..."
                         className="home__search-input"
                         value={searchTerm}

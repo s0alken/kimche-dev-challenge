@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import ApolloClient, { gql } from "apollo-boost";
 import { useQuery } from "@apollo/react-hooks";
+import BoxContainer from "./Components/BoxContainer";
 import Home from "./Components/Home";
 import Filters from "./Components/Filters";
 import Results from "./Components/Results";
+import Footer from "./Components/Footer";
 
 const client = new ApolloClient({
   uri: "https://countries.trevorblades.com/",
@@ -63,7 +65,7 @@ const App = () => {
     }, {});
   }
 
-  const onSearch = event => {
+  const onSearch = (event) => {
     event.preventDefault();
     const filtered = countries.filter(c => c.name.toLowerCase().indexOf(searchTerm.toLowerCase()) === 0);
     setFilteredCountries(searchTerm ? filtered : []);
@@ -71,15 +73,16 @@ const App = () => {
   }
 
   return (
-    <>
+    <BoxContainer>
       <Home
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
         onSearch={onSearch}
       />
-      <Filters groupedParameter={groupedParameter} setGroupedParameter={setGroupedParameter}/>
-      <Results groups={groupedCountries} searched={searched}/>
-    </>
+      <Filters groupedParameter={groupedParameter} setGroupedParameter={setGroupedParameter} />
+      <Results groups={groupedCountries} searched={searched} />
+      <Footer />
+    </BoxContainer>
   )
 };
 
