@@ -15,6 +15,7 @@ const GET_COUNTRIES = gql`
   {
     countries {
       name
+      code
       emoji
       capital
       currency
@@ -31,43 +32,49 @@ const GET_COUNTRIES = gql`
 
 const App = () => {
 
-  const [searchTerm, setSearchTerm] = useState("");
-  const [countries, setCountries] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
   const [filteredCountries, setFilteredCountries] = useState([]);
   const [groupedCountries, setGroupedCountries] = useState({});
-  const [groupedParameter, setGroupedParameter] = useState("continent");
+  const [selectedGroupOption, setSelectedGroupOption] = useState('continent');
   const [searched, setSearched] = useState(false);
 
+  //obteniendo datos
   const { data } = useQuery(GET_COUNTRIES, { client: client });
 
   useEffect(() => {
-    setCountries((data || {}).countries);
-  }, [data]);
 
-  useEffect(() => {
-    setGroupedCountries(groupedParameter === "continent" ? groupByContinent() : groupByLanguage());
-  }, [filteredCountries, groupedParameter])
+    //agrupando por continente o idioma
 
-  const groupByContinent = () => {
-    return filteredCountries.reduce((acc, country) => {
-      const group = country['continent'].name;
-      acc[group] = [...(acc[group] || []), country];
-      return acc;
-    }, {});
-  }
+    //retorna un objeto cuyas claves son los continentes o idiomas
+    //los valores son un array con los respectivos países
+    const groupByContinent = () => {
+      return filteredCountries.reduce((acc, country) => {
+        const group = country['continent'].name;
+        acc[group] = [...(acc[group] || []), country];
+        return acc;
+      }, {});
+    }
 
-  const groupByLanguage = () => {
-    return filteredCountries.reduce((acc, country) => {
-      country['languages'].forEach(language => {
-        acc[language.name] = [...acc[language.name] || [], country];
-      });
-      return acc;
-    }, {});
-  }
+    const groupByLanguage = () => {
+      return filteredCountries.reduce((acc, country) => {
+        country['languages'].forEach(language => {
+          acc[language.name] = [...acc[language.name] || [], country];
+        });
+        return acc;
+      }, {});
+    }
 
-  const onSearch = (event) => {
+    setGroupedCountries(selectedGroupOption === "continent" ? groupByContinent() : groupByLanguage());
+
+  }, [filteredCountries, selectedGroupOption])
+
+  //filtrando países en base a la búsqueda del usuario
+  const onSearch = event => {
     event.preventDefault();
-    const filtered = countries.filter(c => c.name.toLowerCase().indexOf(searchTerm.toLowerCase()) === 0);
+
+    if (!searchTerm) return;
+
+    const filtered = data.countries.filter(c => c.name.toLowerCase().indexOf(searchTerm.toLowerCase()) === 0);
     setFilteredCountries(searchTerm ? filtered : []);
     setSearched(true);
   }
@@ -79,7 +86,7 @@ const App = () => {
         setSearchTerm={setSearchTerm}
         onSearch={onSearch}
       />
-      <Filters groupedParameter={groupedParameter} setGroupedParameter={setGroupedParameter} />
+      <Filters selectedGroupOption={selectedGroupOption} setSelectedGroupOption={setSelectedGroupOption} />
       <Results groups={groupedCountries} searched={searched} />
       <Footer />
     </BoxContainer>

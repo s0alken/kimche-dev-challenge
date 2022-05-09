@@ -3,6 +3,16 @@
 Nombre postulante: [Rodrigo Molina Garrido]
 Link a la app en producción: [https://kimchechallenge-six.vercel.app/]
 
+# Respuesta
+
+Para un volumen de datos tan largo, una opción sería hacer un particionado horizontal
+a la base de datos, que consiste en dividir la tabla en menos filas alterando la forma en que el motor
+almacena los datos, el usuario determina las reglas con las que se distribuyen las porciones
+de datos y de esa forma, las consultas recaerían en una fracción determinada de la tabla.
+Como el volumen de datos de reduce, tambien lo haría el tiempo de lectura y escritura,
+por otra parte, las tablas particionadas serían más faciles de mantener, se podría tomar una sola partición
+y optimizarla, o incluso eliminar toda una partición de manera casi instantanea.
+
 ## Instrucciones
 
 Debes crear un buscador de países consultando el [siguiente grafo](https://countries.trevorblades.com/). Este código contiene una base para seguir con la aplicación en React y ApolloClient. Queda a disposición tuya cualquier cambio, ya sea de estructura, estilo, etc.
