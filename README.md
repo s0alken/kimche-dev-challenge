@@ -5,7 +5,13 @@ Link a la app en producción: [https://kimchechallenge-six.vercel.app/]
 
 # Respuesta
 
-Para un volumen de datos tan largo, una opción sería hacer un particionado horizontal a la base de datos, que consiste en dividir la tabla en menos filas alterando la forma en que el motor almacena los datos, el usuario determina las reglas con las que se distribuyen las porciones de datos y de esa forma, las consultas recaerían en una fracción determinada de la tabla. Como el volumen de datos se reduce, tambien lo haría el tiempo de lectura y escritura, por otra parte, las tablas particionadas serían más faciles de mantener, se podría tomar una sola partición y optimizarla, o incluso eliminarla de manera casi instantanea.
+Para un volumen de datos tan largo, una opción sería hacer un particionado horizontal
+a la base de datos, que consiste en dividir la tabla en menos filas alterando la forma en que el motor
+almacena los datos, el usuario determina las reglas con las que se distribuyen las porciones
+de datos y de esa forma, las consultas recaerían en una fracción determinada de la tabla.
+Como el volumen de datos se reduce, tambien lo haría el tiempo de lectura y escritura,
+por otra parte, las tablas particionadas serían más faciles de mantener, se podría tomar una sola partición
+y optimizarla, o incluso eliminarla de manera casi instantanea.
 
 ## Instrucciones
 
