@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "./Button";
 
-const Filters = ({ groupedParameter, setGroupedParameter }) => {
+const Filters = ({ selectedGroupOption, setSelectedGroupOption }) => {
 
     return (
         <section className="filters">
@@ -9,13 +9,13 @@ const Filters = ({ groupedParameter, setGroupedParameter }) => {
                 <div className="filters__content">
                     <Button
                         value='continent'
-                        active={groupedParameter === 'continent'}
-                        setGroupedParameter={setGroupedParameter}
+                        active={selectedGroupOption === 'continent'}
+                        setGroupedParameter={setSelectedGroupOption}
                     />
                     <Button
                         value='language'
-                        active={groupedParameter === 'language'}
-                        setGroupedParameter={setGroupedParameter}
+                        active={selectedGroupOption === 'language'}
+                        setGroupedParameter={setSelectedGroupOption}
                     />
                 </div>
             </div>

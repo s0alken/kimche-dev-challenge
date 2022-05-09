@@ -1,11 +1,11 @@
 import React from "react";
 
-const Button = ({ value, active, setSelectedGroupOption }) => {
+const Button = ({ value, active, setGroupedParameter }) => {
 
     return (
         <button
             className={active ? 'filters__button button_active' : 'filters__button'}
-            onClick={() => setSelectedGroupOption(value)}
+            onClick={() => setGroupedParameter(value)}
         >
             {`Group by ${value}`}
         </button>
