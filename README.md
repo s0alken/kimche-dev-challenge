@@ -1,7 +1,7 @@
 # Desafío para Software Engineers
 
-Nombre postulante: [Rodrigo Molina Garrido]
-Link a la app en producción: [https://kimchechallenge-six.vercel.app/]
+Nombre postulante: Rodrigo Molina Garrido
+Link a la app en producción: https://kimchechallenge-six.vercel.app/
 
 # Respuesta
 
@@ -12,6 +12,11 @@ de datos y de esa forma, las consultas recaerían en una fracción determinada d
 Como el volumen de datos se reduce, tambien lo haría el tiempo de lectura y escritura,
 por otra parte, las tablas particionadas serían más faciles de mantener, se podría tomar una sola partición
 y optimizarla, o incluso eliminarla de manera casi instantanea.
+
+# Screenshot
+
+![Screenshot](https://user-images.githubusercontent.com/57046544/171273820-e435fb45-0bcb-483a-a04c-f5ffa7a09e50.png)
+
 
 ## Instrucciones
 
