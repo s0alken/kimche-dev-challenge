@@ -1,6 +1,6 @@
 # Desafío para Software Engineers
 
-Nombre postulante: Rodrigo Molina Garrido
+Nombre postulante: Rodrigo Molina Garrido\
 Link a la app en producción: https://kimchechallenge-six.vercel.app/
 
 # Respuesta
